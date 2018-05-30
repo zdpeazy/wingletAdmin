@@ -148,17 +148,38 @@ $(function() {
 		spacingw:30,//设置隐藏时的距离
 	    spacingh:260,//设置显示时间距
 	});
+
+
 });
+$(function(){
+	var apiurl = 'http://m.bjysshop.com';
+	$.ajax({
+		url: apiurl + '/admin/commodity/list',
+		type: 'GET',
+		data: {
+			pageSize: 50
+		},
+		dataType: 'json',
+		crossDomain: true,
+		success: function(res){
+			console.log(res)
+		}
+	})
+
+	function loadGoodList(data){
+		var 
+	}
+})
 </script>
 <script type="text/javascript">
-//初始化宽度、高度
- $(".widget-box").height($(window).height()-215);
-$(".table_menu_list").width($(window).width()-260);
- $(".table_menu_list").height($(window).height()-215);
+  //初始化宽度、高度
+  $(".widget-box").height($(window).height()-215);
+  $(".table_menu_list").width($(window).width()-260);
+  $(".table_menu_list").height($(window).height()-215);
   //当文档窗口发生改变时 触发
-    $(window).resize(function(){
-	$(".widget-box").height($(window).height()-215);
-	 $(".table_menu_list").width($(window).width()-260);
+  $(window).resize(function(){
+		$(".widget-box").height($(window).height()-215);
+	 	$(".table_menu_list").width($(window).width()-260);
 	  $(".table_menu_list").height($(window).height()-215);
 	})
 
