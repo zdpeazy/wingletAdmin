@@ -175,7 +175,7 @@
 				<div class="clearfix cl">
 					<div class="Button_operation">
 						<button class="btn btn-primary radius" type="submit" id="add_good"><i class="icon-save "></i>保存</button>
-						<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+						<button class="btn btn-default radius" type="button" id="cancle">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
 					</div>
 				</div>
 			</div>
@@ -292,11 +292,24 @@ $(function(){
   		url: apiurl + '/admin/commodity/add',
   		data: requestObj,
   		success: function(res){
-  			console.log(res);
+  			if(res.code != 0){
+  				layer.msg(res.msg);
+  				return;
+  			}
+  			layer.msg('添加成功!',{icon: 6,time:1000});
+				setTimeout(function(){
+					$('#iframe').attr('src', 'Products_List.html');
+				}, 1000)
   		}
   	})
   })
+  $('#cancle').click(function(){
+  	console.log($('#iframe'))
+  	// $('#iframe').attr('src', 'Products_List.html');
+  	// window.loaction.reload();
+  })
 })
+
 $( document).ready(function(){
 //初始化宽度、高度
   $(".widget-box").height($(window).height());
