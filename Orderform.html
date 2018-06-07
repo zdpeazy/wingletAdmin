@@ -246,10 +246,10 @@ $(function(){
       layer.confirm('确认取消订单',function(index){
         handleCancle(orderNo, function(res){
           if(res.code != 0){
-            layer.msg(res.msg,{icon: 5,time:1500});
+            layer.msg(res.msg,{icon: 2,time:1500});
             return;
           }
-          layer.msg('已取消!',{icon: 5,time:1000});
+          layer.msg('已取消!',{icon: 1,time:1000});
           setTimeout(function(){
             window.location.reload();
           }, 1000)
@@ -261,10 +261,10 @@ $(function(){
       layer.confirm('确认用户已经提货',function(index){
         confirmReciving(orderNo, function(res){
           if(res.code != 0){
-            layer.msg(res.msg,{icon: 5,time:1500});
+            layer.msg(res.msg,{icon: 2,time:1500});
             return;
           }
-          layer.msg('已确认用户已经提货!',{icon: 5,time:1000});
+          layer.msg('已确认用户已经提货!',{icon: 1,time:1000});
           setTimeout(function(){
             window.location.reload();
           }, 1000)

@@ -227,7 +227,7 @@ $(function(){
                 orderStatusDesc = '转售中';
                 reSellOrderStatusDesc='质检完';
                 userOperationDesc = '用户未确认成交';
-                operationDom = '<a href="javascript:;"  class="btn btn-xs btn-warning cancleOrder" >取消订单</a>';
+                operationDom = '<a href="javascript:;"  class="btn btn-xs btn-warning amendPrice" >修改转售价格</a><a href="javascript:;"  class="btn btn-xs btn-warning cancleOrder" >取消订单</a>';
               break;
               default:
                 orderStatusDesc = '已转售';
@@ -280,10 +280,10 @@ $(function(){
       layer.confirm('确认取消订单',function(index){
         handleCancle(orderNo, function(res){
           if(res.code != 0){
-            layer.msg(res.msg,{icon: 5,time:1500});
+            layer.msg(res.msg,{icon: 2,time:1500});
             return;
           }
-          layer.msg('已取消!',{icon: 5,time:1000});
+          layer.msg('已取消!',{icon: 1,time:1000});
           setTimeout(function(){
             window.location.reload();
           }, 1000)
@@ -295,10 +295,10 @@ $(function(){
       layer.confirm('确认用户已经送货上门',function(index){
         resalepickup(orderNo, function(res){
           if(res.code != 0){
-            layer.msg(res.msg,{icon: 5,time:1500});
+            layer.msg(res.msg,{icon: 2,time:1500});
             return;
           }
-          layer.msg('已确认用户已经送货上门!',{icon: 5,time:1000});
+          layer.msg('已确认用户已经送货上门!',{icon: 1,time:1000});
           setTimeout(function(){
             window.location.reload();
           }, 1000)
@@ -313,15 +313,15 @@ $(function(){
       var orderNo = $(this).attr('data-orderNo');
       var estimatePrice = $(this).prev('.changeInput').val();
       if(estimatePrice == ''){
-        layer.msg('价格不能为空',{icon: 5,time:1500});
+        layer.msg('价格不能为空',{icon: 2,time:1500});
         return;
       }
       resaleprice(orderNo, estimatePrice, function(res){
         if(res.code != 0){
-          layer.msg(res.msg,{icon: 5,time:1500});
+          layer.msg(res.msg,{icon: 2,time:1500});
           return;
         }
-        layer.msg('修改预估价格成功！',{icon: 5,time:1000});
+        layer.msg('修改预估价格成功！',{icon: 1,time:1000});
         setTimeout(function(){
           window.location.reload();
         }, 1000)
@@ -332,7 +332,7 @@ $(function(){
       layer.confirm('确认质检通过？',function(index){
         quality(orderNo, function(res){
           if(res.code != 0){
-            layer.msg(res.msg,{icon: 5,time:1500});
+            layer.msg(res.msg,{icon: 2,time:1500});
             return;
           }
           setTimeout(function(){

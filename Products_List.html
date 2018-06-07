@@ -172,7 +172,7 @@ $(function(){
 	            '<td class="td-manage" data-id=' + item.id +' data-status=' + item.status + '>' +
 	              statusDom +
 	              '<a href="javascript:;"  class="btn btn-xs btn-info delete" >删除</a>' +
-	              '<a href="javascript:;"  class="btn btn-xs btn-warning" >编辑</a>' +
+	              /*'<a href="javascript:;"  class="btn btn-xs btn-warning" >编辑</a>' +*/
 	            '</td>' +
 	          '</tr>';
 	        allDOM += trDOM;
@@ -190,7 +190,7 @@ $(function(){
 			if(status == 0 ){
 				layer.confirm('确认下架？',function(index){
 					updateSatus(id, 1 , function(){
-						layer.msg('已下架!',{icon: 5,time:1000});
+						layer.msg('已下架!',{icon: 1,time:1000});
 						setTimeout(function(){
 							window.location.reload();
 						}, 1000)
@@ -199,7 +199,7 @@ $(function(){
 			} else {
 				layer.confirm('确认上架？',function(index){
 					updateSatus(id, 0 , function(){
-						layer.msg('已上架!',{icon: 6,time:1000});
+						layer.msg('已上架!',{icon: 1,time:1000});
 						setTimeout(function(){
 							window.location.reload();
 						}, 1000)
@@ -217,6 +217,9 @@ $(function(){
 					})
 				});
 		})
+		$('.btn_search').click(function(){
+      layer.msg('暂时不支持筛选查询，敬请期待！' ,{icon: 5,time:1500});
+    })
 	}
 
 	function updateSatus(id, status, cb){
